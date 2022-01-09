@@ -3,13 +3,24 @@
     <div id="navbar">
       <h2>Movie.sido</h2>
       <div class="">
-        <input type="text" placeholder="Find movie..." />
+        <input v-model="search" type="text" placeholder="Find movie..." />
       </div>
     </div>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      search: "",
+    };
+  },
+  watch: {
+    search() {
+      this.$store.dispatch("search", this.search);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

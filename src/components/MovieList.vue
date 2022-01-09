@@ -1,9 +1,29 @@
 <template>
-  <div id="movie-container">Movie list</div>
+  <div id="movie-container">
+    <Movie v-for="movie in movies" :key="movie.id" :movie="movie" />
+  </div>
 </template>
 
 <script>
-export default {};
+import Movie from "./Movie";
+export default {
+  name: "Movie List",
+  components: { Movie },
+  data() {
+    return {
+      //   movies: [],
+    };
+  },
+
+  //   created() {
+  //     this.movies = this.$store.getters.getMovies;
+  //   },
+  computed: {
+    movies() {
+      return this.$store.getters.getMovies;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
